@@ -9,6 +9,7 @@
 body {
   background: #171818;
   font-family: "Josefin Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 #logo {
@@ -16,6 +17,11 @@ body {
   font-family: "Abril Fatface", serif;
   font-weight: lighter;
   font-size: 2.3rem;
+  text-decoration: none;
+}
+
+.logo-span {
+  color: rgb(255, 139, 93);
 }
 
 .nav-header {
@@ -31,8 +37,7 @@ body {
 }
 
 .line1,
-.line2,
-.line3 {
+.line2 {
   width: 3rem;
   height: 0.2rem;
   margin: 0.4rem;
@@ -41,10 +46,6 @@ body {
 
 .line2 {
   width: 2rem;
-}
-
-.line3 {
-  width: 1rem;
 }
 
 .slide {
@@ -73,6 +74,7 @@ body {
   position: relative;
   flex: 1;
   flex-basis: 25rem;
+  overflow: hidden;
 }
 
 .hero-img img {
@@ -173,7 +175,7 @@ body {
 .insta {
   color: #cf2d88;
 }
-/* 
+
 .reveal-img,
 .reveal-text {
   position: absolute;
@@ -182,12 +184,14 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-} */
+}
 
 .cursor {
   width: 3rem;
   height: 3rem;
   border: 2px solid white;
-  position: absolute;
+  position: fixed;
   border-radius: 5rem;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
