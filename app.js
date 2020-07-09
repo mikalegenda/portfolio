@@ -42,8 +42,9 @@ function initiateController() {
   });
 }
 
+let mouse = document.querySelector(".cursor");
+let mouseTxt = mouse.querySelector("span");
 function cursor(e) {
-  let mouse = document.querySelector(".cursor");
   const body = document.querySelector("body");
   mouse.style.top = e.clientY + "px";
   mouse.style.left = e.clientX + "px";
@@ -52,8 +53,29 @@ function cursor(e) {
 
 function activeCursor(e) {
   const item = e.target;
+  if (
+    item.id === "logo" ||
+    item.classList.contains("burger") ||
+    item.classList.contains("line1") ||
+    item.classList.contains("line2") ||
+    item.classList.contains("logo-span")
+  ) {
+    mouse.classList.add("nav-active");
+  } else {
+    mouse.classList.remove("nav-active");
+  }
+  if (item.classList.contains("explore")) {
+    mouse.classList.add("explore-active");
+    gsap.to(".title-swipe", 1, { y: "0%" });
+    mouseTxt.innerText = "Click";
+  } else {
+    mouse.classList.remove("explore-active");
+    mouseTxt.innerText = "";
+    gsap.to(".title-swipe", 1, { y: "100%" });
+  }
 }
 
 window.addEventListener("mousemove", cursor);
+window.addEventListener("mouseover", activeCursor);
 
 initiateController();
