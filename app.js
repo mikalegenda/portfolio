@@ -42,13 +42,13 @@ function initiateController() {
   });
 }
 
-let mouse = document.querySelector(".cursor");
-let mouseTxt = mouse.querySelector("span");
+const mouse = document.querySelector(".cursor");
+const mouseTxt = mouse.querySelector("span");
+const burger = document.querySelector(".burger");
+const body = document.querySelector("body");
 function cursor(e) {
-  const body = document.querySelector("body");
   mouse.style.top = e.clientY + "px";
   mouse.style.left = e.clientX + "px";
-  body.style.cursor = "none";
 }
 
 function activeCursor(e) {
@@ -75,6 +75,36 @@ function activeCursor(e) {
   }
 }
 
+function navToggle(e) {
+  gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
+  gsap.to(".line2", 0.5, { rotate: "-45", y: -5, width: "3rem", background: "black" });
+  gsap.to("#logo", 0.5, { color: "black" });
+  gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+}
+
+function navCursor(e, i) {
+  const navbar = document.querySelector(".nav-bar");
+  const li = navbar.querySelectorAll("li");
+  const p = navbar.querySelector("p");
+  const h2 = navbar.querySelector("h2");
+  if (
+    e.target.classList.contains("nav-links") ||
+    e.target.classList.contains("nav-bar") ||
+    e.target === li.children[i] ||
+    e.target === p ||
+    e.target === h2
+  ) {
+    console.log(e.target);
+    body.style.cursor = "auto";
+  } else {
+    console.log(e.target);
+    body.style.cursor = "none";
+  }
+}
+
+//Event Listeners
+burger.addEventListener("click", navToggle);
+window.addEventListener("mouseover", navCursor);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
