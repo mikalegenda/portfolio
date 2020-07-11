@@ -76,29 +76,31 @@ function activeCursor(e) {
 }
 
 function navToggle(e) {
-  gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
-  gsap.to(".line2", 0.5, { rotate: "-45", y: -5, width: "3rem", background: "black" });
-  gsap.to("#logo", 0.5, { color: "black" });
-  gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+  if (!e.target.classList.contains("active")) {
+    e.target.classList.add("active");
+    gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
+    gsap.to(".line2", 0.5, { rotate: "-45", y: -5, width: "3rem", background: "black" });
+    gsap.to("#logo", 0.5, { color: "black" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+  } else {
+    e.target.classList.remove("active");
+    gsap.to(".line1", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to(".line2", 0.5, { rotate: "0", y: 0, width: "2rem", background: "white" });
+    gsap.to("#logo", 0.5, { color: "white" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(50px at 100% -10%)" });
+  }
 }
 
-function navCursor(e, i) {
-  const navbar = document.querySelector(".nav-bar");
-  const li = navbar.querySelectorAll("li");
-  const p = navbar.querySelector("p");
-  const h2 = navbar.querySelector("h2");
-  if (
-    e.target.classList.contains("nav-links") ||
-    e.target.classList.contains("nav-bar") ||
-    e.target === li.children[i] ||
-    e.target === p ||
-    e.target === h2
-  ) {
-    console.log(e.target);
+function navCursor(e) {
+  const logo = document.getElementById("logo");
+  if (burger.classList.contains("active")) {
+    logo.style.cursor = "pointer";
     body.style.cursor = "auto";
+    burger.style.cursor = "pointer";
   } else {
-    console.log(e.target);
     body.style.cursor = "none";
+    logo.style.cursor = "none";
+    burger.style.cursor = "none";
   }
 }
 

@@ -25,6 +25,10 @@ body {
   color: rgb(255, 139, 93);
 }
 
+.burger {
+  cursor: pointer;
+}
+
 .nav-header {
   min-height: 10vh;
   font-size: 1rem;
@@ -45,6 +49,7 @@ body {
   height: 0.2rem;
   margin: 0.4rem;
   background: white;
+  pointer-events: none;
 }
 
 .line2 {
@@ -96,12 +101,12 @@ body {
 
 .hero-desc h2 {
   font-family: "Abril Fatface";
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .hero-desc p {
   padding: 3rem 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(235, 235, 235);
 }
 
@@ -141,6 +146,7 @@ body {
 .nav-links li {
   padding: 3rem 0rem;
   list-style: none;
+  cursor: pointer;
 }
 
 .nav-links li a {
