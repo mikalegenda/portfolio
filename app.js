@@ -64,7 +64,7 @@ function activeCursor(e) {
   } else {
     mouse.classList.remove("nav-active");
   }
-  if (item.classList.contains("explore")) {
+  if (item.classList.contains("explore") || item.classList.contains("beat")) {
     mouse.classList.add("explore-active");
     gsap.to(".title-swipe", 1, { y: "0%" });
     mouseTxt.innerText = "Click";
@@ -72,6 +72,11 @@ function activeCursor(e) {
     mouse.classList.remove("explore-active");
     mouseTxt.innerText = "";
     gsap.to(".title-swipe", 1, { y: "100%" });
+  }
+  if (item.classList.contains("logo-span")) {
+    gsap.to(".logo-span", 0.5, { color: "white" });
+  } else {
+    gsap.to(".logo-span", 0.5, { color: "rgb(255, 139, 93)" });
   }
 }
 
@@ -82,12 +87,16 @@ function navToggle(e) {
     gsap.to(".line2", 0.5, { rotate: "-45", y: -5, width: "3rem", background: "black" });
     gsap.to("#logo", 0.5, { color: "black" });
     gsap.to(".nav-bar", 1, { clipPath: "circle(2500px at 100% -10%)" });
+    gsap.to(".logo-span", 1, { color: "black" });
+    document.body.classList.add("hide");
   } else {
     e.target.classList.remove("active");
     gsap.to(".line1", 0.5, { rotate: "0", y: 0, background: "white" });
     gsap.to(".line2", 0.5, { rotate: "0", y: 0, width: "2rem", background: "white" });
     gsap.to("#logo", 0.5, { color: "white" });
     gsap.to(".nav-bar", 1, { clipPath: "circle(50px at 100% -10%)" });
+    gsap.to(".logo-span", 1, { color: "rgb(255, 139, 93)" });
+    document.body.classList.remove("hide");
   }
 }
 

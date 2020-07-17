@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  scroll-snap-type: y mandatory;
+}
+
 #logo {
   color: white;
   font-family: "Abril Fatface", serif;
@@ -65,6 +69,7 @@ body {
   align-items: center;
   color: white;
   background: #171818;
+  scroll-snap-align: center;
 }
 
 .hero-desc {
@@ -130,7 +135,7 @@ body {
   height: 100%;
   background: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   z-index: 1;
   opacity: 1;
@@ -141,6 +146,7 @@ body {
 .nav-links {
   font-size: 3rem;
   flex-basis: 30rem;
+  margin-right: 10rem;
 }
 
 .nav-links li {
@@ -239,4 +245,86 @@ body {
 
 .t-swipe2 {
   background: rgb(86, 124, 228);
+}
+
+body.hide {
+  overflow: hidden;
+}
+
+/* Beat Page */
+.beat1 {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  color: white;
+  position: relative;
+}
+
+.beat-img {
+  width: 50vw;
+  margin-top: 2rem;
+}
+
+.beat-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beat-text {
+  position: relative;
+  text-align: center;
+}
+
+.beat-text h1 {
+  font-size: 4rem;
+  padding: 5rem 0rem;
+  color: rgb(255, 139, 93);
+}
+
+.beat-text p {
+  font-size: 1.5rem;
+  padding: 0rem 0rem 5rem 0rem;
+}
+
+.beat-nr {
+  font-size: 15rem;
+  position: absolute;
+  bottom: -12%;
+  right: 10%;
+  color: rgb(255, 139, 93);
+}
+
+.beat-try {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.beat-try h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.beat-try a {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  cursor: none;
+  text-decoration: none;
+}
+
+.beat-source {
+  border: 2px solid white;
+  border-radius: 5rem;
+  color: white;
+}
+
+.beat-demo {
+  border: 2px solid rgb(255, 139, 93);
+  border-radius: 5rem;
+  color: rgb(255, 139, 93);
 }
