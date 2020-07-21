@@ -2,7 +2,7 @@ let controller;
 let slideScene;
 let pageScene;
 
-function initiateController() {
+function animateSlides() {
   //Initiate the controller
   controller = new ScrollMagic.Controller();
 
@@ -68,11 +68,19 @@ function activeCursor(e) {
     mouse.classList.add("explore-active");
     gsap.to(".title-swipe", 1, { y: "0%" });
     mouseTxt.innerText = "Click";
+    console.log(item);
   } else {
     mouse.classList.remove("explore-active");
     mouseTxt.innerText = "";
     gsap.to(".title-swipe", 1, { y: "100%" });
   }
+  // if (item.classList.contains("beat")) {
+  //   mouse.classList.add("explore-active");
+  //   mouseTxt.innerText = "Click";
+  // } else {
+  //   mouse.classList.remove("explore-active");
+  //   mouseTxt.innerText = "";
+  // }
   if (item.classList.contains("logo-span")) {
     gsap.to(".logo-span", 0.5, { color: "white" });
   } else {
@@ -113,10 +121,65 @@ function navCursor(e) {
   }
 }
 
+//Barba Page Transitions
+barba.init({
+  views: [
+    {
+      namespace: "home",
+      beforeEnter() {
+        animateSlides();
+        logo.href = "./index.html";
+      },
+      beforeLeave() {
+        slideScene.destroy();
+        pageScene.destroy();
+        controller.destroy();
+      },
+    },
+    {
+      namespace: "beat",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "color",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "todo",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+  ],
+  transitions: [
+    {
+      leave({ current, next }) {
+        let done = this.async();
+        //Animation
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+        tl.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
+        tl.fromTo(".swipe", 0.5, { x: "-100%" }, { x: "0%", onComplete: done }, "-=0.5");
+      },
+      enter({ current, next }) {
+        let done = this.async();
+
+        window.scrollTo(0, 0);
+        //Animation
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        tl.fromTo(".swipe", 0.5, { x: "0%" }, { x: "100%", stagger: 0.2, onComplete: done });
+        tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+      },
+    },
+  ],
+});
+
 //Event Listeners
 burger.addEventListener("click", navToggle);
 window.addEventListener("mouseover", navCursor);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
-
-initiateController();
