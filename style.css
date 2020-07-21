@@ -464,6 +464,7 @@ body.hide {
   .color-try h2,
   .todo-try h2 {
     font-size: 2rem;
+    margin-bottom: 3rem;
   }
 
   .source-wrap {
