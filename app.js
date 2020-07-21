@@ -18,7 +18,6 @@ function animateSlides() {
     slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
     slideTl.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
     slideTl.fromTo(revealText, { x: "0%" }, { x: "100%" }, "-=0.5");
-    slideTl.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.5");
 
     //New scene
     slideScene = new ScrollMagic.Scene({
@@ -108,6 +107,26 @@ function navToggle(e) {
   }
 }
 
+function navToggleMobile(e) {
+  if (!e.target.classList.contains("active")) {
+    e.target.classList.add("active");
+    gsap.to(".line1", 0.5, { rotate: "45", y: 5, background: "black" });
+    gsap.to(".line2", 0.5, { rotate: "-45", y: -5, width: "3rem", background: "black" });
+    gsap.to("#logo", 0.5, { color: "black" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(1000px at 100% -10%)" });
+    gsap.to(".logo-span", 1, { color: "black" });
+    document.body.classList.add("hide");
+  } else {
+    e.target.classList.remove("active");
+    gsap.to(".line1", 0.5, { rotate: "0", y: 0, background: "white" });
+    gsap.to(".line2", 0.5, { rotate: "0", y: 0, width: "2rem", background: "white" });
+    gsap.to("#logo", 0.5, { color: "white" });
+    gsap.to(".nav-bar", 1, { clipPath: "circle(50px at 100% -10%)" });
+    gsap.to(".logo-span", 1, { color: "rgb(255, 139, 93)" });
+    document.body.classList.remove("hide");
+  }
+}
+
 function navCursor(e) {
   const logo = document.getElementById("logo");
   if (burger.classList.contains("active")) {
@@ -173,13 +192,17 @@ barba.init({
         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
         tl.fromTo(".swipe", 0.5, { x: "0%" }, { x: "100%", stagger: 0.2, onComplete: done });
         tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+        tl.fromTo(".nav-header", 1, { y: "-100%" }, { y: "0%", ease: "power2.inOut" }, "-=1.5");
       },
     },
   ],
 });
 
 //Event Listeners
-burger.addEventListener("click", navToggle);
+if (matchMedia("only screen and (max-width: 480px)")) {
+  burger.addEventListener("click", navToggleMobile);
+} else {
+  burger.addEventListener("click", navToggle);
+}
 window.addEventListener("mouseover", navCursor);
 window.addEventListener("mousemove", cursor);
-window.addEventListener("mouseover", activeCursor);

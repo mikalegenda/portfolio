@@ -18,6 +18,10 @@ main {
   width: 100%;
 }
 
+.wrap {
+  overflow-x: hidden;
+}
+
 #logo {
   color: white;
   font-family: "Abril Fatface", serif;
@@ -118,7 +122,7 @@ main {
   background: none;
   border: none;
   color: white;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 3rem;
   font-size: 1rem;
   text-decoration: none;
@@ -370,4 +374,114 @@ body.hide {
   border: 2px solid rgb(255, 139, 93);
   border-radius: 5rem;
   color: rgb(255, 139, 93);
+}
+
+@media screen and (max-width: 1025px) {
+  main {
+    margin: 0;
+  }
+
+  .slide {
+    display: block;
+    text-align: left;
+  }
+
+  .hero-desc {
+    display: block;
+    padding: 0;
+  }
+
+  .hero-desc h2 {
+    padding: 1rem 0rem;
+    font-size: 2rem;
+  }
+
+  .hero-desc p {
+    padding: 1rem 0rem;
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .hero-img {
+    padding-top: 4rem;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .nav-header {
+    padding: 2rem 0 0 0;
+  }
+
+  .nav-bar {
+    display: block;
+  }
+
+  .nav-links {
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 12rem;
+  }
+
+  .nav-links li {
+    padding: 1rem 0rem;
+  }
+
+  .contact {
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-size: 2rem;
+    padding-top: 5rem;
+  }
+
+  .contact p {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    width: 90%;
+    margin: auto;
+  }
+
+  .beat-text h1,
+  .color-text h1,
+  .todo-text h1 {
+    font-size: 2rem;
+    padding: 2rem 0rem;
+  }
+
+  .beat-text p,
+  .color-text p,
+  .todo-text p {
+    font-size: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .beat-try h2,
+  .color-try h2,
+  .todo-try h2 {
+    font-size: 2rem;
+  }
+
+  .source-wrap {
+    margin-top: 4rem;
+  }
+
+  .beat-img,
+  .color-img,
+  .todo-img {
+    width: 100%;
+  }
+
+  .beat-nr,
+  .color-nr,
+  .todo-nr {
+    font-size: 5rem;
+    bottom: 5%;
+    right: -5%;
+    -moz-bottom: -5%;
+  }
 }
