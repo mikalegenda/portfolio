@@ -347,7 +347,7 @@ body.hide {
 .color-try h2,
 .todo-try h2 {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .beat-try a,
@@ -375,6 +375,8 @@ body.hide {
   border-radius: 5rem;
   color: rgb(255, 139, 93);
 }
+
+/* Media queries*/
 
 @media screen and (max-width: 1025px) {
   main {
@@ -460,15 +462,22 @@ body.hide {
     padding-bottom: 2rem;
   }
 
+  .beat-try,
+  .color-try,
+  .todo-try {
+    margin: 0;
+  }
+
   .beat-try h2,
   .color-try h2,
   .todo-try h2 {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   .source-wrap {
-    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .beat-img,
